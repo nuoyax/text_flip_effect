@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>水平翻转效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        span {
+            color: #fff;
+            font-size: 45px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            animation: flip 2s infinite;
+            letter-spacing: 10px;
+            /* css方式翻转 */
+            /* animation-delay: calc(.2s * var(--i)); */
+        }
+
+
+        @keyframes flip {
+            0%,
+            70% {
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
+     <script>
+        window.onload=()=>{
+            // js方式翻转
+        let txt = "west world"
+        let txts = txt.split('')
+        const flips = document.querySelector("#flips")
+
+        for (let index = 0; index < txts.length; index++) {
+            let spanNode = document.createElement('span')
+            spanNode.innerText = txts[index]
+            spanNode.style.cssText += "animation-delay:" + index*0.1  + 's'
+            flips.appendChild(spanNode)
+
+        }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="flips"></div>
+   <!-- css方式翻转 -->
+    <!-- <span style="--i:1">C</span>
+    <span style="--i:2">a</span>
+    <span style="--i:3">r</span>
+    <span style="--i:4">s</span>
+    <span style="--i:5">l</span>
+    <span style="--i:6">a</span>
+    <span style="--i:7">n</span> -->
+
+   
+</body>
+
+</html>
